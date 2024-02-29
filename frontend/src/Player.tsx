@@ -6,7 +6,7 @@ export default function Player() {
     const [url, setUrl] = useState<string>("https://www.youtube.com/watch?v=xvFZjo5PgG0");
 
     return (
-        <div>
+        <div className="">
             <th>Custom URL</th>
             <td>
                 <input className="border"

@@ -1,13 +1,14 @@
-import Fiszka from "./Fiszka"
+import Fiszka from "./Flashcard"
 import Player from "./Player"
 import Whiteboard from "./WhiteBoard"
 
-export default function WideoView() {
+export default function VideoView() {
 
     return (
 
-        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 rotate">
-            <div className="w-full bg-blue-500 text-white p-4">
+        <div className="flex flex-col items-center justify-center bg-gray-100">
+
+            <div className="w-full bg-blue-500 justify-center flex pb-10 pt-5">
                 <Player />
             </div>
 

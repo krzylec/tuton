@@ -4,7 +4,7 @@ import Whiteboard from './WhiteBoard';
 import ReactPlayer from 'react-player';
 import ToDo from './ToDo';
 import Player from './Player';
-import WideoView from './WideoView';
+import VideoView from './VideoView';
 
 export default function TabExplorer() {
 
@@ -15,15 +15,15 @@ export default function TabExplorer() {
       <div>
         {/* Przyciski zakładek */}
         <Tabs selectedIndex={selectedTab} onSelect={(index) => setSelectedTab(index)}>
-          <TabList className="flex justify-center m-1 flex-auto ">
+          <TabList className="flex justify-center m-1 flex-auto">
             <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">whiteboard</Tab>
             <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">player</Tab>
             <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">todo list</Tab>
           </TabList>
 
           <TabPanel>
-            <div className="flex justify- p-4">
-              <WideoView/>
+            <div className="flex justify-center p-4">
+              <VideoView/>
             </div>
           </TabPanel>
 
