@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Whiteboard from './WhiteBoard';
 import ReactPlayer from 'react-player';
+import ToDo from './ToDo';
+import Player from './Player';
 
 export default function TabExplorer() {
 
@@ -15,7 +17,7 @@ export default function TabExplorer() {
           <TabList className="flex justify-center m-1 flex-auto ">
             <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">whiteboard</Tab>
             <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">player</Tab>
-            <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">todo</Tab>
+            <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">todo list</Tab>
           </TabList>
 
           <TabPanel>
@@ -26,13 +28,13 @@ export default function TabExplorer() {
 
           <TabPanel>
             <div className="flex justify-center p-4">
-              <ReactPlayer url='https://www.youtube.com/watch?v=cIFmYOyeLpI&t=22657s' />
+              <Player></Player>
             </div>
           </TabPanel>
 
           <TabPanel>
             <div className="flex justify-center p-4">
-              <h1>todo</h1>
+              <ToDo></ToDo>
             </div>
           </TabPanel>
 
