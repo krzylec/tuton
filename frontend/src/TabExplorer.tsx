@@ -4,6 +4,7 @@ import Whiteboard from './WhiteBoard';
 import ReactPlayer from 'react-player';
 import ToDo from './ToDo';
 import Player from './Player';
+import WideoView from './WideoView';
 
 export default function TabExplorer() {
 
@@ -21,8 +22,8 @@ export default function TabExplorer() {
           </TabList>
 
           <TabPanel>
-            <div className="flex justify-center p-4">
-              <Whiteboard></Whiteboard>
+            <div className="flex justify- p-4">
+              <WideoView/>
             </div>
           </TabPanel>
 

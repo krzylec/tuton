@@ -3,11 +3,21 @@ import ReactPlayer from 'react-player';
 
 export default function Player() {
 
+    const [url, setUrl] = useState<string>("https://www.youtube.com/watch?v=xvFZjo5PgG0");
+
     return (
         <div>
             <th>Custom URL</th>
-            <td><input className=" border" type="text" placeholder="Enter URL"></input></td>
-            <ReactPlayer url='https://www.youtube.com/watch?v=cIFmYOyeLpI&t=22657s' />
+            <td>
+                <input className="border"
+                    type="text"
+                    placeholder="Enter URL"
+                    onChange={(e) => {
+                        setUrl(e.target.value);
+                    }}>
+                </input>
+            </td>
+            <ReactPlayer url={url} />
         </div>
     )
 }
