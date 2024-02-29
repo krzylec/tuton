@@ -1,8 +1,8 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from "react";
+import logo from "./logo.svg";
 import { Tldraw } from "@tldraw/tldraw";
-import Whiteboard from './WhiteBoard';
-import TabExplorer from './TabExplorer';
+import Whiteboard from "./WhiteBoard";
+import TabExplorer from "./TabExplorer";
 
 function App() {
   return (
@@ -11,7 +11,6 @@ function App() {
         TUTORN
       </h1>
       <TabExplorer />
-    
     </>
   );
 }
