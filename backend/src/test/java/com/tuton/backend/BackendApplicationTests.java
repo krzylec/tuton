@@ -1,10 +1,10 @@
-package com.example.tuton;
+package com.tuton.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TutonApplicationTests {
+class BackendApplicationTests {
 
 	@Test
 	void contextLoads() {
