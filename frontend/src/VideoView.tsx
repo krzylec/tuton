@@ -1,6 +1,5 @@
 import Fiszka from "./Flashcard";
 import Player from "./Player";
-import Whiteboard from "./WhiteBoard";
 
 export default function VideoView() {
   return (
