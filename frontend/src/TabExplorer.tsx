@@ -17,7 +17,7 @@ export default function TabExplorer() {
           <TabList className="flex justify-center m-1 flex-auto ">
             <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">whiteboard</Tab>
             <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">player</Tab>
-            <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">todo list</Tab>
+            <Tab className="p-2 mx-2 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">todo list</Tab>
           </TabList>
 
           <TabPanel>
