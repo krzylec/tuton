@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-
 export default function ToDo() {
   return (
     <div>
