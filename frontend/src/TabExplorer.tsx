@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import ToDo from "./ToDo";
 import VideoView from "./VideoView";
 import ListView from "./ListView";
+import LoginView from "./LoginView";
 
 export default function TabExplorer() {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -35,6 +36,9 @@ export default function TabExplorer() {
             Wideo
           </Tab>
           <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">
+            Logowanie
+          </Tab>
+          <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">
             todo list
           </Tab>
         </TabList>
@@ -48,6 +52,12 @@ export default function TabExplorer() {
         <TabPanel>
           <div className="flex justify-center p-4">
             <VideoView />
+          </div>
+        </TabPanel>
+
+        <TabPanel>
+          <div className="flex justify-center p-4">
+            <LoginView></LoginView>
           </div>
         </TabPanel>
 
