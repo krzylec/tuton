@@ -1,7 +1,9 @@
 package com.tuton.backend.controllers.Lesson;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.tuton.backend.dto.LessonDto;
@@ -20,4 +22,9 @@ public class LessonFacade {
                 .map(LessonMapper::toDto)
                 .toList();
     }
+
+    public Optional<LessonDto> getLessonDtoById(long id) {
+        return lessonService.repository.findById(id).map(LessonMapper::toDto);
+    }
+
 }
