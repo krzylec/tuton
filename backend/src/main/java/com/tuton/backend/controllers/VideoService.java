@@ -6,4 +6,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class VideoService {
     VideoRepository repository;
+
+    public VideoService(VideoRepository repository) {
+        this.repository = repository;
+    }
 }

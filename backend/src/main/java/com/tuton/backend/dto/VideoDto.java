@@ -9,7 +9,7 @@ import java.util.List;
 @Builder
 public class VideoDto {
 
-    private int id;
+    private long id;
     private String url;
 
     private List<FlashcardDto> flashcards;
