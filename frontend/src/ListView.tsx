@@ -1,10 +1,7 @@
-import { useState } from "react";
-
 interface TileListProps {
   labelList: string[];
 }
 
-// Define the TileList component
 export default function ListView({ labelList }: Readonly<TileListProps>) {
   return (
     <div className="grid grid-cols-5 gap-4">
