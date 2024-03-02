@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 interface FlashcardProps {
   title: string;
@@ -15,7 +15,7 @@ export default function LoginView() {
     return password.length === 0;
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const data = {
       username: username,
       password: password,
@@ -23,14 +23,26 @@ export default function LoginView() {
 
     console.log(data);
 
-    // axios
-    //   .post("url_do_api/logowanie", data)
-    //   .then((response) => {
-    //     console.log("Zalogowano pomyślnie!", response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Błąd logowania:", error.response.data);
-    //   });
+    // axios.get('http://localhost:8080/hello').then(value => {
+    //   // console.log(value.data);
+    // }).catch(reason => {
+    //   console.log(reason)
+    // })
+    // .post("url_do_api/logowanie", data)
+    // .then((response) => {
+    //   console.log("Zalogowano pomyślnie!", response.data);
+    // })
+    // .catch((error) => {
+    //   console.error("Błąd logowania:", error.response.data);
+    // });
+
+    try {
+      const response: AxiosResponse = await axios.get(
+        "" + "http://localhost:8080/hello"
+      );
+      const responseData: string = response.data;
+      console.log(responseData);
+    } catch (error) {}
   };
 
   return (
