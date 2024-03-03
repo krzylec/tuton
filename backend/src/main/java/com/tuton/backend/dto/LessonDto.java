@@ -5,12 +5,13 @@ import lombok.Data;
 
 import java.util.List;
 
+import com.tuton.backend.model.Flashcard;
+
 @Data
 @Builder
-public class VideoDto {
+public class LessonDto {
 
-    private int id;
+    private long id;
     private String url;
-
-    private List<FlashcardDto> flashcards;
+    private List<Flashcard> flashcards;
 }
