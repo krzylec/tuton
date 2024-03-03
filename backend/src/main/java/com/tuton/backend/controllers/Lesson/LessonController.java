@@ -1,10 +1,10 @@
 package com.tuton.backend.controllers.lesson;
 
 import com.tuton.backend.dto.LessonDto;
-import com.tuton.backend.model.Lesson;
 
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,28 +12,39 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController()
-@RequestMapping("/lessons")
+@RequestMapping("/lesson")
 @RequiredArgsConstructor
 public class LessonController {
 
     private final LessonFacade lessonFacade;
 
     @GetMapping("")
-    List<LessonDto> readAllLessonsdDtos() {
-        return lessonFacade.getLessonDtosList();
+    List<LessonDto> getAllLessons() {
+        return lessonFacade.getLessonList();
     }
 
     @GetMapping("/{id}")
-    public LessonDto getMethodName(@PathVariable long id) {
-        return lessonFacade.getLessonDtoById(id);
+    public LessonDto getLesson(@PathVariable long id) {
+        return lessonFacade.getLessonById(id);
     }
 
     @PostMapping("")
-    public Lesson postMethodName(@RequestBody LessonDto lessondtDto) {
-        return lessonFacade.saveLessonDto(lessondtDto);
+    public LessonDto saveLesson(@RequestBody LessonDto lessonDto) {
+        return lessonFacade.saveLesson(lessonDto);
+    }
+
+    @PutMapping("/{id}")
+    public LessonDto updateLesson(@PathVariable Long id, @RequestBody LessonDto updatedLesson) {
+        return lessonFacade.updateLesson(id, updatedLesson);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteLesson(@PathVariable Long id) {
+        lessonFacade.deleteLesson(id);
     }
 }

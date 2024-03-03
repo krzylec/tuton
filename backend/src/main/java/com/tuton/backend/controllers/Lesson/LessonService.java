@@ -1,11 +1,10 @@
 package com.tuton.backend.controllers.lesson;
 
-import com.tuton.backend.dto.LessonDto;
-import com.tuton.backend.mappers.LessonMapper;
 import com.tuton.backend.model.Lesson;
 import com.tuton.backend.repositories.LessonRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -17,19 +16,35 @@ public class LessonService {
         this.repository = repository;
     }
 
-    public List<LessonDto> getLessonDtosList() {
-        return repository.findAll().stream()
-                .map(e -> new LessonMapper().toDto(e))
-                .toList();
+    public List<Lesson> getLessonList() {
+        return repository.findAll();
     }
 
-    public LessonDto getLessonDtoById(long id) {
-        return repository.findById(id).map(e -> new LessonMapper().toDto(e)).orElseThrow();
+    public Optional<Lesson> getLessonById(long id) {
+        if (repository.findById(id).isPresent()) {
+            return repository.findById(id);
+        } else {
+            throw new IllegalStateException("Lesson with given ID does not exists");
+        }
     }
 
-    @SuppressWarnings("null")
-    public Lesson saveLessonDto(LessonDto lessonDto) {
-        return repository.save(new LessonMapper().toEntity(lessonDto));
+    public Lesson saveLesson(Lesson lesson) {
+        if (lesson.getId() == null) {
+            throw new IllegalStateException("Lesson with given ID does not exists");
+        }
+        return repository.save(lesson);
     }
 
+    public Lesson updateLesson(Long id, Lesson lesson) {
+        lesson.setId(id);
+        return repository.save(lesson);
+    }
+
+    public void deleteLesson(Long id) {
+        if (id != null) {
+            repository.deleteById(id);
+        } else {
+            throw new IllegalStateException("Given is null");
+        }
+    }
 }

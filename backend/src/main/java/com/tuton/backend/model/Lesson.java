@@ -2,18 +2,18 @@ package com.tuton.backend.model;
 
 import java.util.List;
 
-import org.springframework.validation.annotation.Validated;
-
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "lesson")
 @Builder
 @Data
-@Validated
-@lombok.NonNull
+@NoArgsConstructor
+@AllArgsConstructor
 public class Lesson {
 
     @Id
