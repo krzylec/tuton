@@ -23,6 +23,6 @@ public class LessonController {
 
     @GetMapping("/lesson/{id}")
     public LessonDto getMethodName(@PathVariable long id) {
-        return lessonFacade.getLessonDtoById(id).orElse(null);
+        return lessonFacade.getLessonDtoById(id).orElseThrow();
     }
 }
