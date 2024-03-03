@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "flashcards")
+@Table(name = "flashcard")
 @Getter
 @Setter
 public class Flashcard {

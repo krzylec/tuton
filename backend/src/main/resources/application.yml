@@ -3,9 +3,8 @@ spring:
       enabled: true
       path: '/console'
   datasource:
-    url: 'jdbc:h2:file:./backend/H2Database'
+    url: 'jdbc:h2:file:./H2Database'
   jpa:
     hibernate:
       ddl-auto: update
-
 

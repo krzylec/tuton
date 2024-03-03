@@ -1,6 +1,7 @@
-package com.tuton.backend.controllers.Lesson;
+package com.tuton.backend.controllers.lesson;
 
 import com.tuton.backend.dto.LessonDto;
+import com.tuton.backend.model.Lesson;
 
 import lombok.RequiredArgsConstructor;
 
@@ -10,19 +11,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController()
+@RequestMapping("/lessons")
 @RequiredArgsConstructor
 public class LessonController {
 
     private final LessonFacade lessonFacade;
 
-    @GetMapping("/lessons")
+    @GetMapping("")
     List<LessonDto> readAllLessonsdDtos() {
-        return lessonFacade.getLessonList();
+        return lessonFacade.getLessonDtosList();
     }
 
-    @GetMapping("/lesson/{id}")
+    @GetMapping("/{id}")
     public LessonDto getMethodName(@PathVariable long id) {
-        return lessonFacade.getLessonDtoById(id).orElseThrow();
+        return lessonFacade.getLessonDtoById(id);
+    }
+
+    @PostMapping("")
+    public Lesson postMethodName(@RequestBody LessonDto lessondtDto) {
+        return lessonFacade.saveLessonDto(lessondtDto);
     }
 }

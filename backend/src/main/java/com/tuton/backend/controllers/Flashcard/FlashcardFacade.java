@@ -1,4 +1,4 @@
-package com.tuton.backend.controllers.Flashcard;
+package com.tuton.backend.controllers.flashcard;
 
 import java.util.List;
 
