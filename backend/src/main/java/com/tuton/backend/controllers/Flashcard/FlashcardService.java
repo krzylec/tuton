@@ -1,7 +1,6 @@
 package com.tuton.backend.controllers.flashcard;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -22,11 +21,9 @@ public class FlashcardService {
         return repository.findAll();
     }
 
-    public Optional<Flashcard> getFlashcardById(long id) {
-        if (!repository.findById(id).isPresent()) {
-            throw new IDNotFoundException("Flashcard with given ID does not exists");
-        }
-        return repository.findById(id);
+    public Flashcard getFlashcardById(long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new IDNotFoundException("Flashcard with given ID does not exists"));
     }
 
     public Flashcard saveFlashcard(Flashcard flashcard) {

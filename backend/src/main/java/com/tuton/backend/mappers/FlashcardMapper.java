@@ -1,5 +1,6 @@
 package com.tuton.backend.mappers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.tuton.backend.dto.FlashcardDto;
@@ -30,6 +31,9 @@ public class FlashcardMapper implements Mapper<Flashcard, FlashcardDto> {
 
     @Override
     public List<Flashcard> toEntity(List<FlashcardDto> dtos) {
+        if (dtos == null) {
+            return new ArrayList<>();
+        }
         return dtos.stream()
                 .map(this::toEntity)
                 .toList();

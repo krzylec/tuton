@@ -5,7 +5,6 @@ import com.tuton.backend.model.Lesson;
 import com.tuton.backend.repositories.LessonRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -21,12 +20,10 @@ public class LessonService {
         return repository.findAll();
     }
 
-    public Optional<Lesson> getLessonById(long id) {
-        if (repository.findById(id).isPresent()) {
-            return repository.findById(id);
-        } else {
-            throw new IDNotFoundException("Lesson with given ID does not exists");
-        }
+    public Lesson getLessonById(long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new IDNotFoundException("Lesson with given ID does not exists"));
+
     }
 
     public Lesson saveLesson(Lesson lesson) {
@@ -42,10 +39,9 @@ public class LessonService {
     }
 
     public void deleteLesson(Long id) {
-        if (id != null) {
-            repository.deleteById(id);
-        } else {
+        if (id == null) {
             throw new IllegalStateException("Given id is null");
         }
+        repository.deleteById(id);
     }
 }

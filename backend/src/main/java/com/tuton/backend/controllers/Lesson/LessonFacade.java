@@ -18,7 +18,7 @@ public class LessonFacade {
     }
 
     public LessonDto getLessonById(long id) {
-        return new LessonMapper().toDto(lessonService.getLessonById(id).orElseThrow());
+        return new LessonMapper().toDto(lessonService.getLessonById(id));
     }
 
     public LessonDto saveLesson(LessonDto lessonDto) {

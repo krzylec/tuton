@@ -20,7 +20,7 @@ public class FlashcardFacade {
     }
 
     public FlashcardDto getFlashcardById(long id) {
-        return new FlashcardMapper().toDto(flashcardService.getFlashcardById(id).orElseThrow());
+        return new FlashcardMapper().toDto(flashcardService.getFlashcardById(id));
     }
 
     public FlashcardDto saveFlashcard(FlashcardDto flashcardDto) {
