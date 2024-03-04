@@ -2,18 +2,22 @@ package com.tuton.backend.model;
 
 
 import jakarta.persistence.*;
-import lombok.Builder;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
-@Builder
 @Table(name = "video")
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Video {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
+    private UUID id;
     private String title;
     private String location;
     private LocalDate creationDate;

@@ -26,9 +26,9 @@ public class VideoController {
         return videoFacade.getAll();
     }
 
-    @GetMapping("/{id}")
-    public VideoDto getVideoById(@PathVariable Long id) {
-        return videoFacade.getById(id);
+    @GetMapping("/{uuid}")
+    public VideoDto getVideoById(@PathVariable String uuid) {
+        return videoFacade.getById(uuid);
     }
 
     @PostMapping
@@ -43,7 +43,7 @@ public class VideoController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteVideo(@PathVariable Long id) {
+    public void deleteVideo(@PathVariable String id) {
         videoFacade.delete(id);
     }
 }

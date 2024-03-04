@@ -1,6 +1,7 @@
 package com.tuton.backend.controllers.video;
 
 import com.tuton.backend.dto.VideoDto;
+import com.tuton.backend.mappers.VideoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -20,37 +21,31 @@ public class VideoFacade {
 
     private final VideoService videoService;
 
+
     public List<VideoDto> getAll() {
 
-        //todo
-        return new ArrayList<>();
+        return videoService.getAll().stream().map(VideoMapper::toDto).toList();
     }
 
-    public VideoDto getById(Long id) {
-        //todo
-        return VideoDto.builder()
-                .id(id)
-                .creationDate(LocalDate.now())
-                .build();
+    public VideoDto getById(String id) {
+        return VideoMapper.toDto(videoService.getById(id));
     }
 
-    public VideoDto save(VideoDto video) {
-        //todo
-        return null;
+    public VideoDto save(VideoDto videoDto) {
+        return VideoMapper.toDto(videoService.save(VideoMapper.toEntity(videoDto)));
     }
 
     public VideoDto update(VideoDto updatedVideo) {
-        //todo
-        return null;
+        return VideoMapper.toDto(videoService.save(VideoMapper.toEntity(updatedVideo)));
     }
 
-    public void delete(Long id) {
-        //todo
+    public void delete(String id) {
+        videoService.delete(id);
     }
 
     public ResponseEntity<byte[]> steam(Long id) throws IOException {
         // Load video file from the classpath
-        Resource resource = new ClassPathResource("wideo.mp4");
+        Resource resource = new ClassPathResource("videos/wideo.mp4");
 
         // Read the file content
         byte[] videoBytes = Files.readAllBytes(resource.getFile().toPath());
