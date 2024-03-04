@@ -23,7 +23,7 @@ public class LessonController {
 
     private final LessonFacade lessonFacade;
 
-    @GetMapping("")
+    @GetMapping()
     List<LessonDto> getAllLesson() {
         return lessonFacade.getLessonList();
     }
@@ -33,7 +33,7 @@ public class LessonController {
         return lessonFacade.getLessonById(id);
     }
 
-    @PostMapping("")
+    @PostMapping()
     public LessonDto saveLesson(@RequestBody LessonDto lessonDto) {
         return lessonFacade.saveLesson(lessonDto);
     }
