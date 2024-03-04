@@ -24,7 +24,7 @@ public class LessonController {
     private final LessonFacade lessonFacade;
 
     @GetMapping("")
-    List<LessonDto> getAllLessons() {
+    List<LessonDto> getAllLesson() {
         return lessonFacade.getLessonList();
     }
 

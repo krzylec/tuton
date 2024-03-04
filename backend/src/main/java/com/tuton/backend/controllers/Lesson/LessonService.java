@@ -1,5 +1,6 @@
 package com.tuton.backend.controllers.lesson;
 
+import com.tuton.backend.exceptions.custom.IDNotFoundException;
 import com.tuton.backend.model.Lesson;
 import com.tuton.backend.repositories.LessonRepository;
 
@@ -24,13 +25,13 @@ public class LessonService {
         if (repository.findById(id).isPresent()) {
             return repository.findById(id);
         } else {
-            throw new IllegalStateException("Lesson with given ID does not exists");
+            throw new IDNotFoundException("Lesson with given ID does not exists");
         }
     }
 
     public Lesson saveLesson(Lesson lesson) {
         if (lesson.getId() == null) {
-            throw new IllegalStateException("Lesson with given ID does not exists");
+            throw new IDNotFoundException("Lesson with given ID does not exists");
         }
         return repository.save(lesson);
     }
@@ -44,7 +45,7 @@ public class LessonService {
         if (id != null) {
             repository.deleteById(id);
         } else {
-            throw new IllegalStateException("Given is null");
+            throw new IllegalStateException("Given id is null");
         }
     }
 }

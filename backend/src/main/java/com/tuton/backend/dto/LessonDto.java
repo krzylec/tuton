@@ -14,4 +14,5 @@ public class LessonDto {
     private long id;
     private String url;
     private List<Flashcard> flashcards;
+    private long lessonId;
 }
