@@ -5,7 +5,7 @@ export default function VideoView() {
   return (
     <div className="flex flex-col items-center justify-center bg-gray-100">
       <div className="w-full bg-blue-500 justify-center flex pb-10 pt-5">
-        <Player />
+        <Player url="http://localhost:8080/api/videos/stream/1" />
       </div>
 
       <div className="flex flex-wrap justify-center">

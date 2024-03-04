@@ -1,25 +1,35 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import ReactPlayer from "react-player";
 
-export default function Player() {
-  const [url, setUrl] = useState<string>(
-    "https://www.youtube.com/watch?v=xvFZjo5PgG0"
-  );
+interface PlayerProps {
+    url: string;
+}
 
-  return (
-    <div className="">
-      <th>Custom URL</th>
-      <td>
-        <input
-          className="border"
-          type="text"
-          placeholder="Enter URL"
-          onChange={(e) => {
-            setUrl(e.target.value);
-          }}
-        ></input>
-      </td>
-      <ReactPlayer url={url} />
-    </div>
-  );
+export default function Player({url}: Readonly<PlayerProps>) {
+    const [error, setError] = useState(false);
+
+    const handleError = () => {
+        setError(true);
+    };
+
+    useEffect(() => {
+        setError(false);
+    }, [url]);
+    const VideoPlayer = () => {
+        return (
+            <video controls onError={handleError}>
+                <source src={url} type="video/mp4"/>
+            </video>
+        );
+    };
+
+    const PlaceHolder = () => {
+        return <ReactPlayer url="https://www.youtube.com/watch?v=xXik7-co1M8"/>;
+    };
+
+    return (
+        <div className="">
+            <div>{error ? <PlaceHolder/> : <VideoPlayer/>}</div>
+        </div>
+    );
 }

@@ -1,7 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
-import { Tldraw } from "@tldraw/tldraw";
-import Whiteboard from "./WhiteBoard";
 import TabExplorer from "./TabExplorer";
 
 function App() {
