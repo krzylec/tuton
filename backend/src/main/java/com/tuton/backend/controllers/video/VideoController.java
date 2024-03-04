@@ -16,9 +16,9 @@ public class VideoController {
     private final VideoFacade videoFacade;
 
     @GetMapping("/stream/{id}")
-    public ResponseEntity<byte[]> getExampleVideo(@PathVariable Long id) throws IOException {
+    public ResponseEntity<byte[]> getExampleVideo(@PathVariable String id) throws IOException {
 
-        return videoFacade.steam(id);
+        return videoFacade.stream(id);
     }
 
     @GetMapping

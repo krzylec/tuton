@@ -1,11 +1,14 @@
 package com.tuton.backend.controllers.video;
 
-import com.tuton.backend.dto.VideoDto;
 import com.tuton.backend.model.Video;
 import com.tuton.backend.repositories.VideoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -41,5 +44,13 @@ public class VideoService {
 
     public List<Video> getAll() {
         return repository.findAll();
+    }
+
+    public byte[] readVideo(UUID uuid) throws IOException {
+
+        Video video = repository.findById(uuid).orElseThrow();
+        Resource resource = new ClassPathResource(video.getLocation());
+        return Files.readAllBytes(resource.getFile().toPath());
+
     }
 }

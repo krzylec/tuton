@@ -1,5 +1,7 @@
 package com.tuton.backend.dto;
 
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.Data;

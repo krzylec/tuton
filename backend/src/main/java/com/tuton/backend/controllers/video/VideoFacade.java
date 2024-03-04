@@ -11,16 +11,14 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
 public class VideoFacade {
 
     private final VideoService videoService;
-
 
     public List<VideoDto> getAll() {
 
@@ -43,14 +41,9 @@ public class VideoFacade {
         videoService.delete(id);
     }
 
-    public ResponseEntity<byte[]> steam(Long id) throws IOException {
-        // Load video file from the classpath
-        Resource resource = new ClassPathResource("videos/wideo.mp4");
+    public ResponseEntity<byte[]> stream(String id) throws IOException {
+        byte[] videoBytes = videoService.readVideo(UUID.fromString(id));
 
-        // Read the file content
-        byte[] videoBytes = Files.readAllBytes(resource.getFile().toPath());
-
-        // Set appropriate headers
         return ResponseEntity.ok()
                 .contentType(MediaType.valueOf("video/mp4"))
                 .body(videoBytes);
