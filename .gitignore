@@ -163,4 +163,4 @@ build/
 ### VS Code ###
 .vscode/
 
-*Db.*
+*.db*

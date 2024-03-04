@@ -3,17 +3,21 @@ package com.tuton.backend.model;
 import java.util.List;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "lessons")
-@Getter
-@Setter
+@Table(name = "lesson")
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Lesson {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String url;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lesson")
