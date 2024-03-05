@@ -4,9 +4,6 @@ export default function ToDo() {
       <div>
         <h1>BACKEND</h1>
         <li>crud user</li>
-        <li>crud fiszki</li>
-        <li>crud wideo</li>
-        <li>fiszki do filmu</li>
         <li>token</li>
       </div>
 
@@ -14,6 +11,7 @@ export default function ToDo() {
         <h1>FRONTEND</h1>
         <li>widok logowania</li>
         <li>widok administratora</li>
+        <li>refaktor lekcji</li>
         <li>refaktor fiszki</li>
       </div>
     </div>

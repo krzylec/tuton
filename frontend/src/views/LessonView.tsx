@@ -1,7 +1,7 @@
-import Fiszka from "./Flashcard";
-import Player from "./Player";
+import Fiszka from "../components/custom/Flashcard";
+import Player from "../components/custom/Player";
 
-export default function VideoView() {
+export default function LessonView() {
   return (
     <div className="flex flex-col items-center justify-center bg-gray-100">
       <div className="w-full bg-blue-500 justify-center flex pb-10 pt-5">
