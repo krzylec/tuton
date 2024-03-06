@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import Player from "./../components/custom/Player";
+import Button from "./../components/basic/Button";
+import Label from "./../components/basic/Label";
 import { handleCreateVideo, handleDeleteVideo, fetchVideos } from './../handlers/VideoHandler';
 
 interface VideoDto {
@@ -23,24 +24,25 @@ export default function AdminView(){
             <h1>Videos</h1>
             <ul>
                 {videos.map((video: VideoDto) => (
-                    <div className="grid grid-cols-1 gap-4">
-                        <div className="mb-2">
-                            <label className="mr-5">{video.id} - {video.title} - {video.location}</label>
-                            <button
-                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                onClick={() => handleDeleteVideo(video.id, fetchVideos, setVideos)}>Delete
-                            </button>
-                            <button
-                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    <React.Fragment key={video.id}>
+                        <div className="flex flex-row items-center">
+                            <Label
+                                text={video.id + ' - ' + video.title + ' - ' + video.location}
+                                />
+                            <Button
+                                text="Delete"
+                                onClick={() => handleDeleteVideo(video.id, fetchVideos, setVideos)}
+                            /> 
+                            <Button
+                                text="Poka"
                                 onClick={() => {
                                     let url = 'http://localhost:8080/api/videos/stream/' + video.id;
                                     console.log(url)
                                     setVideoUrl(url)
-                                }
-                                }>Poka
-                            </button>
+                                    }}
+                            />
                         </div>
-                    </div>
+                    </React.Fragment>
                 ))}
             </ul>
             <h2>Create Video</h2>
@@ -56,12 +58,11 @@ export default function AdminView(){
                 onChange={(e) => setNewVideo({...newVideo, location: e.target.value})}
                 placeholder="videos/wideo1.mp4"
             />
-            <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            <Button
+                text="Create video"
                 type="button"
-                onClick={() => handleCreateVideo(newVideo, setNewVideo, setVideos)}>
-                Create
-            </button>
+                onClick={() => handleCreateVideo(newVideo, setNewVideo, setVideos)}
+            />
             <Player url={videoUrl}/>
         </div>
     );

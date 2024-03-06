@@ -77,9 +77,10 @@ export default function LoginView() {
           )}
         </div>
         <div className="flex items-center justify-between">
-          <Button type="button" onClick={handleLogin}>
-            Zaloguj się
-          </Button>
+          <Button 
+            onClick={handleLogin}
+            text="Zaloguj się"
+          />
           <a
             className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
             href="https://memy.pl/show/big/uploads/Post/241627/15414986099022.jpg"

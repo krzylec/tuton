@@ -34,7 +34,7 @@ export default function TabExplorer() {
             Lista
           </Tab>
           <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">
-            Lekcja
+            Lesson
           </Tab>
           <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">
             Logowanie
