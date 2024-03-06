@@ -27,6 +27,7 @@ export default function TabExplorer() {
       {/* Przyciski zakładek */}
       <Tabs
         selectedIndex={selectedTab}
+        selectedTabClassName="p-2 mx-1 cursor-pointer bg-green-500 hover:bg-green-500 transition-colors rounded-md"
         onSelect={(index) => setSelectedTab(index)}
       >
         <TabList className="flex justify-center m-1 flex-auto">
