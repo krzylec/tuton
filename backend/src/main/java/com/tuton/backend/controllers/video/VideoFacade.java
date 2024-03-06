@@ -2,6 +2,7 @@ package com.tuton.backend.controllers.video;
 
 import com.tuton.backend.dto.VideoDto;
 import com.tuton.backend.mappers.VideoMapper;
+import jakarta.persistence.Cacheable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

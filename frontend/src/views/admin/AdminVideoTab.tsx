@@ -12,59 +12,58 @@ interface VideoDto {
 
 export default function AdminView(){
     const [videos, setVideos] = useState<VideoDto[]>([]);
-    const [newVideo, setNewVideo] = useState<VideoDto>({id: "", title: '', location: ''});
     const [videoUrl, setVideoUrl] = useState('');
+    const [videoPlayer, setVideoPlayer]:any = useState();
 
+    const handleError = () => {
+    };
+    
     useEffect(() => {
         fetchVideos(setVideos);
     }, []);
+
+
     
     return (
-        <div>
-            <h1>Videos</h1>
-            <ul>
-                {videos.map((video: VideoDto) => (
-                    <React.Fragment key={video.id}>
-                        <div className="flex flex-row items-center">
-                            <Label
-                                text={video.id + ' - ' + video.title + ' - ' + video.location}
-                                />
-                            <Button
-                                text="Delete"
-                                onClick={() => handleDeleteVideo(video.id, fetchVideos, setVideos)}
-                            /> 
-                            <Button
-                                text="Poka"
-                                onClick={() => {
-                                    let url = 'http://localhost:8080/api/videos/stream/' + video.id;
-                                    console.log(url)
-                                    setVideoUrl(url)
-                                    }}
-                            />
+      <div>
+        <h1>Videos</h1>
+        <ul>
+          {videos.map((video: VideoDto) => (
+            <React.Fragment key={video.id}>
+              <div className="flex flex-row items-center">
+                <Label
+                  text={video.id + " - " + video.title + " - " + video.location}
+                />
+                <Button
+                  text="Delete"
+                  onClick={() =>
+                    handleDeleteVideo(video.id, fetchVideos, setVideos)
+                  }
+                />
+                <Button
+                  text="Poka"
+                  onClick={() => {
+                    let url =
+                      "http://localhost:8080/api/videos/stream/" + video.id;
+                    console.log(url);
+                    setVideoUrl(url);
+                    setVideoPlayer(() => {
+                      return (
+                        <div className="">
+                          <video controls onError={handleError}>
+                            <source src={url} type="video/mp4" />
+                          </video>
                         </div>
-                    </React.Fragment>
-                ))}
-            </ul>
-            <h2>Create Video</h2>
-            <input
-                type="text"
-                value={newVideo.title}
-                onChange={(e) => setNewVideo({...newVideo, title: e.target.value})}
-                placeholder="Tytył"
-            />
-            <input
-                type="text"
-                value={newVideo.location}
-                onChange={(e) => setNewVideo({...newVideo, location: e.target.value})}
-                placeholder="videos/wideo1.mp4"
-            />
-            <Button
-                text="Create video"
-                type="button"
-                onClick={() => handleCreateVideo(newVideo, setNewVideo, setVideos)}
-            />
-            <Player url={videoUrl}/>
-        </div>
+                      );
+                    });
+                  }}
+                />
+              </div>
+            </React.Fragment>
+          ))}
+        </ul>
+        {videoPlayer}
+      </div>
     );
 };
 
