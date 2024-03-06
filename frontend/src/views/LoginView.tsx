@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios, { AxiosResponse } from "axios";
-import Button from "./components/basic/Button";
-import Input from "./components/basic/Input";
+import { Button, Input, Label } from "../components/basic";
 
 interface FlashcardProps {
   title: string;
@@ -51,9 +50,10 @@ export default function LoginView() {
     <div className="w-full max-w-xs">
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Login
-          </label>
+          <Label
+            htmlFor="username"
+            text="Login"
+          />
           <Input
             id="username"
             onChange={(e) => setUsername(e.target.value)}
@@ -62,9 +62,10 @@ export default function LoginView() {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Hasło
-          </label>
+          <Label
+            htmlFor="password"
+            text="Hasło" 
+          />
           <Input
             id="password"
             type="password"
@@ -76,9 +77,10 @@ export default function LoginView() {
           )}
         </div>
         <div className="flex items-center justify-between">
-          <Button type="button" onClick={handleLogin}>
-            Zaloguj się
-          </Button>
+          <Button 
+            onClick={handleLogin}
+            text="Zaloguj się"
+          />
           <a
             className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
             href="https://memy.pl/show/big/uploads/Post/241627/15414986099022.jpg"

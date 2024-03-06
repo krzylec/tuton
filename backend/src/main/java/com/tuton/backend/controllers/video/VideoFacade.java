@@ -3,14 +3,11 @@ package com.tuton.backend.controllers.video;
 import com.tuton.backend.dto.VideoDto;
 import com.tuton.backend.mappers.VideoMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.List;
 import java.util.UUID;
 

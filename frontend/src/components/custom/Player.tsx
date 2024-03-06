@@ -3,9 +3,10 @@ import ReactPlayer from "react-player";
 
 interface PlayerProps {
   url: string;
+  placeholderUrl?: string;
 }
 
-export default function Player({ url }: Readonly<PlayerProps>) {
+export default function Player(props: Readonly<PlayerProps>) {
   const [error, setError] = useState(false);
 
   const handleError = () => {
@@ -15,13 +16,13 @@ export default function Player({ url }: Readonly<PlayerProps>) {
   const VideoPlayer = () => {
     return (
       <video controls onError={handleError}>
-        <source src={url} type="video/mp4" />
+        <source src={props.url} type="video/mp4" />
       </video>
     );
   };
 
   const PlaceHolder = () => {
-    return <ReactPlayer url="https://www.youtube.com/watch?v=xXik7-co1M8" />;
+    return <ReactPlayer url={props.placeholderUrl}/>;
   };
 
   return (
