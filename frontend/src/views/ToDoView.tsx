@@ -9,8 +9,16 @@ export default function ToDo() {
 
       <div className="mt-5">
         <h1>FRONTEND</h1>
-        <li>widok logowania</li>
-        <li>widok administratora</li>
+        <li>
+          widok administratora
+          <ul className="ml-10 list-disc">
+            <li>poprawa tab video?</li>
+            <li>tab flashcard</li>
+            <li>tab lesson</li>
+            <li>tab users</li>
+            <li>tab todolist?</li>
+          </ul>
+        </li>
         <li>refaktor lekcji</li>
         <li>refaktor fiszki</li>
       </div>
