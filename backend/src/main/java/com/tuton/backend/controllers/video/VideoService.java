@@ -18,7 +18,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -79,7 +78,7 @@ public class VideoService {
 
         // Get the last element
         String lastElement = parts[parts.length - 1];
-        Resource resource = new ClassPathResource("videos/"+lastElement);
+        Resource resource = new ClassPathResource("videos/" + lastElement);
         return Files.readAllBytes(resource.getFile().toPath());
     }
 
