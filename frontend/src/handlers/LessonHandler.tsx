@@ -4,7 +4,7 @@ import API_URL from './Config';
 const endpoint = `${API_URL}lesson`;
 
 interface FlashcardDto {
-    id?: number;
+    id: number;
     flashcardText: string;
     lessonId: number;
 }
