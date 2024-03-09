@@ -4,7 +4,7 @@ import API_URL from './Config';
 const endpoint = `${API_URL}flashcard`;
 
 interface FlashcardDto {
-    id: number;
+    id?: number;
     flashcardText: string;
     lessonId: number;
 }
@@ -12,7 +12,6 @@ interface FlashcardDto {
 export const fetchFlashcards = async (setFlashcards: React.Dispatch<React.SetStateAction<FlashcardDto[]>>) => {
     try {
         const response  =await axios.get(`${endpoint}`);
-        console.log(response)
         setFlashcards(response.data);
     } catch (error) {
         console.error("Error fetching flashcards: ", error);

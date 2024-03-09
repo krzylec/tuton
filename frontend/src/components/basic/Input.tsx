@@ -8,8 +8,7 @@ export default function Input({setValue, ...rest }: Readonly<InputProps>) {
     <div className="">
         <input
           className="border rounded p-2 w-full focus:outline-none focus:border-primary invalid:text-red-500 invalid:caret-black"
-          type="text"
-        {...rest}
+          {...rest}
         />
     </div>
   );
