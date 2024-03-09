@@ -1,12 +1,16 @@
 import { Input, Label } from "../basic";
 
 interface AdminGeneralElementProps extends React.AllHTMLAttributes<HTMLDivElement>{
+    //pass ID as first element in values and labels
     values: any[];
     labels: string[];
     editFlag?: boolean;
+    //onChange is applied only to input elements
     onChange: (event: React.ChangeEvent<HTMLDivElement>) => void;
 }
 
+//General element to show in admin panels
+//Renders whole row based on provided values and labels
 export default function AdminElement({values, labels, editFlag, onChange, ...rest}: Readonly<AdminGeneralElementProps>) {
     const renderedValues: JSX.Element[] = [];
 

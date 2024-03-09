@@ -18,26 +18,29 @@ interface LessonDto {
 export default function AdminView(){
     const emptyFlashcardDto: FlashcardDto = {id: 0, flashcardText: "", lessonId: 1};
     const labels: string[] = ["id", "flashcardText", "lessonId"];
+    //Array of flashcards to render in AdminElement
     const [flashcards, setFlashcards] = useState<FlashcardDto[]>([]);
     const [newFlashcard, setNewFlashcard] = useState<FlashcardDto>(emptyFlashcardDto);
+    //Array of lessons for select input while creating flashcard
     const [lessons, setLessons] = useState<LessonDto[]>([])
+    //editRow is a flashcard id number of editable row
     const [editRow, setEditRow] = useState(0);
     const [toUpdate, setToUpdate] = useState<FlashcardDto>(emptyFlashcardDto);
-    const handleCreateClick = () => {
+    const handleCreateOnClick = () => {
         handleCreateFlashcard(newFlashcard, setNewFlashcard, setFlashcards);
         setNewFlashcard({id: 0,flashcardText: "", lessonId: 1});
     }
-    const handleEditClick = (flashcard: FlashcardDto) => {
+    const handleEditOnClick = (flashcard: FlashcardDto) => {
         setEditRow(flashcard.id);
         setToUpdate({id: flashcard.id, flashcardText: flashcard.flashcardText, lessonId: flashcard.lessonId});
     }
-    const handleUpdateClick =() => {
+    const handleUpdateOnClick =() => {
         console.log(toUpdate);
         handleUpdateFlashcard(toUpdate, setFlashcards);
         setToUpdate(emptyFlashcardDto);
         setEditRow(0);
     }
-    const handleEditInputChangeEvent = (e: any) => {
+    const handleEditChangeEvent = (e: any) => {
         setToUpdate({...toUpdate, [e.target.name]: e.target.value});
         console.log(toUpdate);
     }
@@ -62,12 +65,12 @@ export default function AdminView(){
                                     <AdminElement
                                         values={[toUpdate.id, toUpdate.flashcardText, toUpdate.lessonId]}
                                         labels={labels}
-                                        onChange={(e)=> handleEditInputChangeEvent(e)}
+                                        onChange={(e)=> handleEditChangeEvent(e)}
                                         editFlag={true}
                                     />
                                     <Button
                                         text="update"
-                                        onClick={() => handleUpdateClick()}
+                                        onClick={() => handleUpdateOnClick()}
                                     />  
                                     <Button
                                         text="delete"
@@ -85,7 +88,7 @@ export default function AdminView(){
                                     />
                                     <Button
                                         text="edit"
-                                        onClick={() => handleEditClick(flashcard)}
+                                        onClick={() => handleEditOnClick(flashcard)}
                                     />  
                                     <Button
                                         text="delete"
@@ -118,7 +121,7 @@ export default function AdminView(){
                 />
                 <Button
                     text="Create flashcard"
-                    onClick={() => handleCreateClick()}
+                    onClick={() => handleCreateOnClick()}
                 />
             </div>
         </div>
