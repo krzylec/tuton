@@ -24,13 +24,13 @@ export default function TabExplorer() {
             </TabList>
 
             <TabPanel>
-                <div className="flex justify-center p-4">
-                <AdminVideoView></AdminVideoView>
+                <div>
+                  <AdminVideoView></AdminVideoView>
                 </div>
             </TabPanel>
             <TabPanel>
-                <div className="flex justify-center p-4">
-                <AdminFlashcardTab></AdminFlashcardTab>
+                <div>
+                  <AdminFlashcardTab></AdminFlashcardTab>
                 </div>
             </TabPanel>
           </Tabs>
