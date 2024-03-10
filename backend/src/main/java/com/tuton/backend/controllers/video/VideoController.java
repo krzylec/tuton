@@ -18,7 +18,13 @@ public class VideoController {
     @GetMapping("/stream/{id}")
     public ResponseEntity<byte[]> getExampleVideo(@PathVariable String id) throws IOException {
 
-        return videoFacade.stream(id);
+        return videoFacade.streamRandom(id);
+    }
+
+    @GetMapping("/stream/random")
+    public ResponseEntity<byte[]> getExampleVideo() throws IOException {
+
+        return videoFacade.streamRandom();
     }
 
     @GetMapping
@@ -45,5 +51,11 @@ public class VideoController {
     @DeleteMapping("/{id}")
     public void deleteVideo(@PathVariable String id) {
         videoFacade.delete(id);
+    }
+
+    @GetMapping("/fetch-videos")
+    public void fetchVideos() {
+
+        videoFacade.fetchVideos();
     }
 }

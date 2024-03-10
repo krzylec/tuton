@@ -2,22 +2,29 @@ package com.tuton.backend.controllers.video;
 
 import com.tuton.backend.model.Video;
 import com.tuton.backend.repositories.VideoRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class VideoService {
 
     private final VideoRepository repository;
+
+    @Value("${videos-path}")
+    private String videosPath;
 
     public Video save(Video videoIn) {
         if (videoIn.getId() == null) {
@@ -42,15 +49,54 @@ public class VideoService {
         return repository.findById(uuid).orElseThrow();
     }
 
+    @Transactional
     public List<Video> getAll() {
         return repository.findAll();
+    }
+
+
+    @Transactional
+    public void scanFilesDirectory() {
+
+        repository.deleteAll();
+
+        File folder = new File(videosPath);
+
+        if (!folder.isDirectory()) {
+            System.err.println("Podana ścieżka nie prowadzi do folderu.");
+            return;
+        }
+
+        File[] files = folder.listFiles();
+
+        if (files == null || files.length == 0) {
+            System.out.println("Folder jest pusty.");
+            return;
+        }
+
+        List<Video> videos = new ArrayList<>();
+        for (File file : files) {
+            videos.add(convertToVideo(file));
+        }
+        log.info("wczytane pliki:" + videos.size());
+
+        repository.saveAll(videos);
+    }
+
+
+    private Video convertToVideo(File file) {
+
+        return Video.builder()
+                .id(UUID.randomUUID())
+                .location(file.getAbsolutePath())
+                .creationDate(LocalDate.now())
+                .title(file.getName())
+                .build();
     }
 
     public byte[] readVideo(UUID uuid) throws IOException {
 
         Video video = repository.findById(uuid).orElseThrow();
-        Resource resource = new ClassPathResource(video.getLocation());
-        return Files.readAllBytes(resource.getFile().toPath());
-
+        return Files.readAllBytes(new File(video.getLocation()).toPath());
     }
 }

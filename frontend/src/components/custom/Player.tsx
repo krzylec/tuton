@@ -15,14 +15,14 @@ export default function Player(props: Readonly<PlayerProps>) {
 
   const VideoPlayer = () => {
     return (
-      <video controls onError={handleError}>
+      <video key={props.url} controls onError={handleError}>
         <source src={props.url} type="video/mp4" />
       </video>
     );
   };
 
   const PlaceHolder = () => {
-    return <ReactPlayer url={props.placeholderUrl}/>;
+    return <ReactPlayer url={props.placeholderUrl} />;
   };
 
   return (

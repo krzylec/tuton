@@ -1,71 +1,94 @@
-import React, { useEffect, useState } from 'react';
-import Player from "../../components/custom/Player";
+import React, { useEffect, useState } from "react";
 import Button from "../../components/basic/Button";
 import Label from "../../components/basic/Label";
-import { handleCreateVideo, handleDeleteVideo, fetchVideos } from '../../handlers/VideoHandler';
-import { Input } from '../../components/basic';
+import { fetchVideos, handleDeleteVideo } from "../../handlers/VideoHandler";
+import axios from "axios";
 
 interface VideoDto {
-    id: string;
-    title: string;
-    location: string;
+  id: string;
+  title: string;
+  location: string;
 }
 
-export default function AdminView(){
-    const [videos, setVideos] = useState<VideoDto[]>([]);
-    const [newVideo, setNewVideo] = useState<VideoDto>({id: "", title: '', location: ''});
-    const [videoUrl, setVideoUrl] = useState('');
+export default function AdminView() {
+  const [videos, setVideos] = useState<VideoDto[]>([]);
+  const [videoUrl, setVideoUrl] = useState("");
 
-    useEffect(() => {
-        fetchVideos(setVideos);
-    }, []);
-    
+  useEffect(() => {
+    fetchVideos(setVideos);
+  }, []);
+
+  const handleError = () => {};
+
+  const VideoPlayer = () => {
     return (
-        <div>
-            <h1>Videos</h1>
-            <ul>
-                {videos.map((video: VideoDto) => (
-                    <React.Fragment key={video.id}>
-                        <div className="flex flex-row items-center">
-                            <Label
-                                text={video.id + ' - ' + video.title + ' - ' + video.location}
-                                />
-                            <Button
-                                text="Delete"
-                                onClick={() => handleDeleteVideo(video.id, fetchVideos, setVideos)}
-                            /> 
-                            <Button
-                                text="Poka"
-                                onClick={() => {
-                                    let url = 'http://localhost:8080/api/videos/stream/' + video.id;
-                                    console.log(url)
-                                    setVideoUrl(url)
-                                    }}
-                            />
-                        </div>
-                    </React.Fragment>
-                ))}
-            </ul>
-            <h2>Create Video</h2>
-            <Input
-                type="text"
-                value={newVideo.title}
-                onChange={(e) => setNewVideo({...newVideo, title: e.target.value})}
-                placeholder="Tytuł"
-            />
-            <Input
-                type="text"
-                value={newVideo.location}
-                onChange={(e) => setNewVideo({...newVideo, location: e.target.value})}
-                placeholder="videos/wideo1.mp4"
-            />
-            <Button
-                text="Create video"
-                type="button"
-                onClick={() => handleCreateVideo(newVideo, setNewVideo, setVideos)}
-            />
-            <Player url={videoUrl}/>
-        </div>
+      <div className="">
+        <video key={videoUrl} controls onError={handleError}>
+          <source src={videoUrl} type="video/mp4" />
+        </video>
+      </div>
     );
-};
+  };
 
+  interface TestProps {
+    id: string;
+  }
+
+  const Buttons = ({ id }: TestProps) => (
+    <div className="flex flex-row space-x-0.5">
+      <Button
+        text="Delete"
+        onClick={() => handleDeleteVideo(id, fetchVideos, setVideos)}
+      />
+      <Button
+        text="Show"
+        onClick={() => {
+          let url = "http://localhost:8080/api/videos/stream/" + id;
+          console.log(url);
+          setVideoUrl(url);
+        }}
+      />
+    </div>
+  );
+
+  function getLabel(video: VideoDto) {
+    return (
+      <Label
+        text={
+          video.id.split("-").at(0) +
+          " - " +
+          video.title +
+          " - " +
+          video.location.split("\\").pop()
+        }
+      />
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-1 content-center justify-center">
+      <Button
+        text={"Refresh"}
+        onClick={() => {
+          axios
+            .get("http://localhost:8080/api/videos/fetch-videos")
+            .then(() => fetchVideos(setVideos));
+        }}
+      />
+      {videoUrl && <VideoPlayer />}
+      <ul className="">
+        {videos.map((video: VideoDto) => (
+          <div
+            key={video.id}
+            className="border p-1 border-gray-600 m-1 rounded"
+          >
+            <div className="flex flex-row items-center justify-between">
+              {getLabel(video)}
+              <Buttons id={video.id} />
+            </div>
+          </div>
+        ))}
+      </ul>
+    </div>
+  );
+}
