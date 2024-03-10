@@ -52,4 +52,10 @@ public class VideoController {
     public void deleteVideo(@PathVariable String id) {
         videoFacade.delete(id);
     }
+
+    @GetMapping("/fetch-videos")
+    public void fetchVideos() {
+
+        videoFacade.fetchVideos();
+    }
 }

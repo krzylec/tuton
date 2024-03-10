@@ -7,4 +7,5 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+videos-path: 'C:\Users\leczy\Videos\Captures'
 

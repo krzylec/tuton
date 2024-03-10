@@ -60,4 +60,8 @@ public class VideoFacade {
                 .contentType(MediaType.valueOf("video/mp4"))
                 .body(videoBytes);
     }
+
+    public void fetchVideos() {
+        videoService.scanFilesDirectory();
+    }
 }
