@@ -35,6 +35,41 @@ export default function AdminView() {
     );
   };
 
+  interface TestProps {
+    id: string;
+  }
+
+  const Buttons = ({ id }: TestProps) => (
+    <div className="flex flex-row">
+      <Button
+        text="Delete"
+        onClick={() => handleDeleteVideo(id, fetchVideos, setVideos)}
+      />
+      <Button
+        text="Show"
+        onClick={() => {
+          let url = "http://localhost:8080/api/videos/stream/" + id;
+          console.log(url);
+          setVideoUrl(url);
+        }}
+      />
+    </div>
+  );
+
+  function getLabel(video: VideoDto) {
+    return (
+      <Label
+        text={
+          video.id.split("-").at(0) +
+          " - " +
+          video.title +
+          " - " +
+          video.location.split("\\").pop()
+        }
+      />
+    );
+  }
+
   return (
     <div className="grid grid-cols-1 content-center justify-center">
       <Button
@@ -46,30 +81,17 @@ export default function AdminView() {
         }}
       />
       {videoUrl && <VideoPlayer />}
-      <ul>
+      <ul className="">
         {videos.map((video: VideoDto) => (
-          <React.Fragment key={video.id}>
-            <div className="flex flex-row gap-x-3 items-center justify-center mb-2">
-              <Label
-                text={video.id + " - " + video.title + " - " + video.location}
-              />
-              <Button
-                text="Delete"
-                onClick={() =>
-                  handleDeleteVideo(video.id, fetchVideos, setVideos)
-                }
-              />
-              <Button
-                text="Show"
-                onClick={() => {
-                  let url =
-                    "http://localhost:8080/api/videos/stream/" + video.id;
-                  console.log(url);
-                  setVideoUrl(url);
-                }}
-              />
+          <div
+            key={video.id}
+            className="border p-1 border-gray-600 m-1 rounded"
+          >
+            <div className="flex flex-row items-center justify-between">
+              {getLabel(video)}
+              <Buttons id={video.id} />
             </div>
-          </React.Fragment>
+          </div>
         ))}
       </ul>
     </div>
