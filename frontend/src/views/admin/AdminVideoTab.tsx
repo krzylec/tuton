@@ -12,11 +12,6 @@ interface VideoDto {
 
 export default function AdminView() {
   const [videos, setVideos] = useState<VideoDto[]>([]);
-  const [newVideo, setNewVideo] = useState<VideoDto>({
-    id: "",
-    title: "",
-    location: "",
-  });
   const [videoUrl, setVideoUrl] = useState("");
 
   useEffect(() => {
@@ -40,7 +35,7 @@ export default function AdminView() {
   }
 
   const Buttons = ({ id }: TestProps) => (
-    <div className="flex flex-row">
+    <div className="flex flex-row space-x-0.5">
       <Button
         text="Delete"
         onClick={() => handleDeleteVideo(id, fetchVideos, setVideos)}
