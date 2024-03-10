@@ -11,9 +11,9 @@ module.exports = {
       tertiary: '#FFC107',
       quaternary: '#9C27B0',
       quinary: '#FF5722',
+      onerror: 'ff0000'
       },
     },
   },
   plugins: [],
 }
-

@@ -3,6 +3,7 @@ import Player from "../../components/custom/Player";
 import Button from "../../components/basic/Button";
 import Label from "../../components/basic/Label";
 import { handleCreateVideo, handleDeleteVideo, fetchVideos } from '../../handlers/VideoHandler';
+import { Input } from '../../components/basic';
 
 interface VideoDto {
     id: string;
@@ -46,13 +47,13 @@ export default function AdminView(){
                 ))}
             </ul>
             <h2>Create Video</h2>
-            <input
+            <Input
                 type="text"
                 value={newVideo.title}
                 onChange={(e) => setNewVideo({...newVideo, title: e.target.value})}
-                placeholder="Tytył"
+                placeholder="Tytuł"
             />
-            <input
+            <Input
                 type="text"
                 value={newVideo.location}
                 onChange={(e) => setNewVideo({...newVideo, location: e.target.value})}
