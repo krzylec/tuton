@@ -13,9 +13,8 @@ export default function LessonView() {
           {[1, 2, 3, 4].map((index) => (
             <Fiszka
               key={index}
-              title={`Fiszka ${index}`}
-              content={`Zawartość fiszki ${index}`}
-              contentFlipped={`Zawartość fiszki zmieniona ${index}`}
+              frontside={`Zawartość fiszki ${index}`}
+              backside={`Zawartość fiszki zmieniona ${index}`}
             />
           ))}
         </div>
@@ -24,9 +23,8 @@ export default function LessonView() {
           {[5, 6, 7, 8].map((index) => (
             <Fiszka
               key={index}
-              title={`Fiszka ${index}`}
-              content={`Zawartość fiszki ${index}`}
-              contentFlipped={`Zawartość fiszki zmieniona ${index}`}
+              frontside={`Zawartość fiszki ${index}`}
+              backside={`Zawartość fiszki zmieniona ${index}`}
             />
           ))}
         </div>
