@@ -1,13 +1,8 @@
 import axios from 'axios';
 import API_URL from './Config';
+import { FlashcardDto } from '../Dto';
 
 const endpoint = `${API_URL}flashcard`;
-
-interface FlashcardDto {
-    id: number;
-    flashcardText: string;
-    lessonId: number;
-}
 
 export const fetchFlashcards = async (setFlashcards: React.Dispatch<React.SetStateAction<FlashcardDto[]>>) => {
     try {
@@ -25,7 +20,7 @@ export const handleCreateFlashcard = async (
 ) => {
     try {
         await axios.post(`${endpoint}`, newFlashcard);
-        setNewFlashcard({id: 0, flashcardText: '', lessonId: 1});
+        setNewFlashcard({id: 0, frontText: '', backText: '', lessonId: 1});
         fetchFlashcards(toFetch);
     } catch (error) {
         console.error("Error creating flashcard: ", error);

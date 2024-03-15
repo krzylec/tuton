@@ -15,7 +15,8 @@ public class FlashcardMapper implements Mapper<Flashcard, FlashcardDto> {
         lesson.setId(dto.getLessonId());
         return Flashcard.builder()
                 .id(dto.getId())
-                .flashcardText(dto.getFlashcardText())
+                .frontText(dto.getFrontText())
+                .backText(dto.getBackText())
                 .lesson(lesson)
                 .build();
     }
@@ -24,7 +25,8 @@ public class FlashcardMapper implements Mapper<Flashcard, FlashcardDto> {
     public FlashcardDto toDto(Flashcard flashcard) {
         return FlashcardDto.builder()
                 .id(flashcard.getId())
-                .flashcardText(flashcard.getFlashcardText())
+                .frontText(flashcard.getFrontText())
+                .backText(flashcard.getBackText())
                 .lessonId(flashcard.getLesson().getId())
                 .build();
     }

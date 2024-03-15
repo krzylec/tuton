@@ -3,12 +3,8 @@ import { fetchFlashcards, handleCreateFlashcard, handleDeleteFlashcard, handleUp
 import { fetchLessons } from '../../handlers/LessonHandler';
 import { Input, Button, Label, Select } from '../../components/basic';
 import AdminElement from '../../components/custom/AdminElement';
+import { FlashcardDto } from '../../Dto';
 
-interface FlashcardDto {
-    id: number;
-    flashcardText: string;
-    lessonId: number;
-}
 interface LessonDto {
     id: number;
     url: string;
@@ -16,8 +12,8 @@ interface LessonDto {
 }
 
 export default function AdminView(){
-    const emptyFlashcardDto: FlashcardDto = {id: 0, flashcardText: "", lessonId: 1};
-    const labels: string[] = ["id", "flashcardText", "lessonId"];
+    const emptyFlashcardDto: FlashcardDto = {id: 0, frontText: "", backText: "", lessonId: 1};
+    const labels: string[] = ["id", "frontText", "backText", "lessonId"];
     //Array of flashcards to render in AdminElement
     const [flashcards, setFlashcards] = useState<FlashcardDto[]>([]);
     const [newFlashcard, setNewFlashcard] = useState<FlashcardDto>(emptyFlashcardDto);
@@ -28,11 +24,11 @@ export default function AdminView(){
     const [toUpdate, setToUpdate] = useState<FlashcardDto>(emptyFlashcardDto);
     const handleCreateOnClick = () => {
         handleCreateFlashcard(newFlashcard, setNewFlashcard, setFlashcards);
-        setNewFlashcard({id: 0,flashcardText: "", lessonId: 1});
+        setNewFlashcard({id: 0, frontText: "", backText: "", lessonId: 1});
     }
     const handleEditOnClick = (flashcard: FlashcardDto) => {
         setEditRow(flashcard.id);
-        setToUpdate({id: flashcard.id, flashcardText: flashcard.flashcardText, lessonId: flashcard.lessonId});
+        setToUpdate({id: flashcard.id, frontText: flashcard.frontText, backText: flashcard.backText, lessonId: flashcard.lessonId});
     }
     const handleUpdateOnClick =() => {
         console.log(toUpdate);
@@ -63,7 +59,7 @@ export default function AdminView(){
                                 //editing row
                                 <>
                                     <AdminElement
-                                        values={[toUpdate.id, toUpdate.flashcardText, toUpdate.lessonId]}
+                                        values={[toUpdate.id, toUpdate.frontText, toUpdate.backText, toUpdate.lessonId]}
                                         labels={labels}
                                         onChange={(e)=> handleEditChangeEvent(e)}
                                         editFlag={true}
@@ -81,8 +77,8 @@ export default function AdminView(){
                                 //not editing row
                                 <>  
                                     <AdminElement
-                                        values={[flashcard.id ,flashcard.flashcardText, flashcard.lessonId]}
-                                        labels={["id" ,"text", "lessonId"]}
+                                        values={[flashcard.id ,flashcard.frontText, flashcard.backText, flashcard.lessonId]}
+                                        labels={labels}
                                         onChange={()=>{}}
                                         editFlag={false}
                                     />
@@ -104,12 +100,20 @@ export default function AdminView(){
             </div>
             <div className="flex flex-row p-2 space-x-1">
                 <Label
-                    text="text:"
+                    text="fronttext:"
                 />
                 <Input
-                    placeholder="flashcard text"
-                    value={newFlashcard.flashcardText}
-                    onChange={(e) => setNewFlashcard({...newFlashcard, flashcardText: e.target.value})}
+                    placeholder="flashcard fronttext"
+                    value={newFlashcard.frontText}
+                    onChange={(e) => setNewFlashcard({...newFlashcard, frontText: e.target.value})}
+                />
+                <Label
+                    text="backtext:"
+                />
+                <Input
+                    placeholder="flashcard backtext"
+                    value={newFlashcard.backText}
+                    onChange={(e) => setNewFlashcard({...newFlashcard, backText: e.target.value})}
                 />
                 <Label
                     text="lessonId:"

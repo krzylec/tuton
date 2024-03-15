@@ -1,13 +1,9 @@
 import axios from 'axios';
 import API_URL from './Config';
+import { FlashcardDto } from '../Dto';
 
 const endpoint = `${API_URL}lesson`;
 
-interface FlashcardDto {
-    id: number;
-    flashcardText: string;
-    lessonId: number;
-}
 interface LessonDto {
     id: number;
     url: string;
