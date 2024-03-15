@@ -2,7 +2,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
 }
 
-export default function Button({text, ...rest }: Readonly<ButtonProps>) {
+export default function Button({ text, ...rest }: Readonly<ButtonProps>) {
   return (
     <div className="">
       <button
