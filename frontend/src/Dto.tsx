@@ -10,3 +10,9 @@ export interface LessonDto {
     url: string;
     flashcardsList: FlashcardDto[];
 }
+
+export interface VideoDto {
+    id: string;
+    title: string;
+    location: string;
+  }

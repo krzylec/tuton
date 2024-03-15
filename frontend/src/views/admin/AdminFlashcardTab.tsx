@@ -3,13 +3,7 @@ import { fetchFlashcards, handleCreateFlashcard, handleDeleteFlashcard, handleUp
 import { fetchLessons } from '../../handlers/LessonHandler';
 import { Input, Button, Label, Select } from '../../components/basic';
 import AdminElement from '../../components/custom/AdminElement';
-import { FlashcardDto } from '../../Dto';
-
-interface LessonDto {
-    id: number;
-    url: string;
-    flashcardsList: FlashcardDto[];
-}
+import { FlashcardDto, LessonDto } from '../../Dto';
 
 export default function AdminView(){
     const emptyFlashcardDto: FlashcardDto = {id: 0, frontText: "", backText: "", lessonId: 1};

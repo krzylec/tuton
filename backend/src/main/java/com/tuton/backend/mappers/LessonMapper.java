@@ -13,7 +13,7 @@ public class LessonMapper implements Mapper<Lesson, LessonDto> {
     public LessonDto toDto(Lesson lesson) {
         return LessonDto.builder()
                 .id(lesson.getId())
-                .url(lesson.getUrl())
+                .videoPath(lesson.getVideoPath())
                 .flashcards(new FlashcardMapper().toDto(lesson.getFlashcards()))
                 .build();
     }
@@ -29,7 +29,7 @@ public class LessonMapper implements Mapper<Lesson, LessonDto> {
     public Lesson toEntity(@Valid LessonDto dto) {
         return Lesson.builder()
                 .id(dto.getId())
-                .url(dto.getUrl())
+                .videoPath(dto.getVideoPath())
                 .flashcards(new FlashcardMapper().toEntity(dto.getFlashcards()))
                 .build();
     }

@@ -10,6 +10,6 @@ import java.util.List;
 public class LessonDto {
 
     private long id;
-    private String url;
+    private String videoPath;
     private List<FlashcardDto> flashcards;
 }
