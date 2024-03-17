@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class DataInitializer {
 
     private final VideoService videoService;
+
     @PostConstruct
     public void initializeData() {
         videoService.scanFilesDirectory();
