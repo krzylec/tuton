@@ -21,4 +21,6 @@ public class Video {
     private String title;
     private String location;
     private LocalDate creationDate;
+    @Lob
+    private byte[] thumbnail;
 }

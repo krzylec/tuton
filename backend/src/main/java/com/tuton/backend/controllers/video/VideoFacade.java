@@ -52,7 +52,7 @@ public class VideoFacade {
 
         List<Video> givenList = videoService.getAll();
         Random rand = new Random();
-        Video randomElement = givenList.get(rand.nextInt(givenList.size()));
+                Video randomElement = givenList.get(rand.nextInt(givenList.size()));
 
         byte[] videoBytes = videoService.readVideo(randomElement.getId());
 

@@ -3,16 +3,14 @@ package com.tuton.backend.model;
 import java.util.List;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "lesson")
 @Builder
-@Data
 @NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
 public class Lesson {
 

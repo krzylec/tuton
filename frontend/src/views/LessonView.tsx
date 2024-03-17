@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import Flashcard from "../components/custom/Flashcard";
 import Player from "../components/custom/Player";
+import { useEffect } from "react";
 
 export default function LessonView() {
   let { lessonId } = useParams();
@@ -10,7 +11,10 @@ export default function LessonView() {
       <h1 className="">LEKCJA {lessonId}</h1>
 
       <div className="w-full bg-blue-500 justify-center flex pb-10 pt-5">
-        <Player url="http://localhost:8080/api/videos/stream/random" />
+        <Player
+          key="lessonId"
+          url="http://localhost:8080/api/videos/stream/random"
+        />
       </div>
 
       <div className="grid grid-cols-4 gap-4">
