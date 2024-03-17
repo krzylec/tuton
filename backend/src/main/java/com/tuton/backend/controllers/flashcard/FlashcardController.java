@@ -22,7 +22,7 @@ public class FlashcardController {
 
     private final FlashcardFacade flashcardFacade;
 
-    @GetMapping()
+    @GetMapping
     List<FlashcardDto> getAllFlashcards() {
         return flashcardFacade.getFlashcardList();
     }
@@ -32,12 +32,12 @@ public class FlashcardController {
         return flashcardFacade.getFlashcardById(id);
     }
 
-    @PostMapping()
+    @PostMapping
     public FlashcardDto saveFlashcard(@RequestBody FlashcardDto flashcardDto) {
         return flashcardFacade.saveFlashcard(flashcardDto);
     }
 
-    @PutMapping("")
+    @PutMapping
     public FlashcardDto updateFlashcard(@RequestBody FlashcardDto updatedFlashcard) {
         return flashcardFacade.updateFlashcard(updatedFlashcard);
     }
