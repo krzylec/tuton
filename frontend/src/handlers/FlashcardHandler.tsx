@@ -46,8 +46,8 @@ export const handleUpdateFlashcard = async (
   toFetch: React.Dispatch<React.SetStateAction<FlashcardDto[]>>,
 ) => {
   try {
-    let { id, ...flashcardData } = flashcardToUpdate;
-    await axios.put(`${endpoint}/${flashcardToUpdate.id}`, flashcardData);
+    // let { id, ...flashcardData } = flashcardToUpdate;
+    await axios.put(`${endpoint}`, flashcardToUpdate);
     fetchFlashcards(toFetch);
   } catch (error) {
     console.error("Error updating flashcard: ", error);

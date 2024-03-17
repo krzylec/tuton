@@ -28,9 +28,9 @@ public class FlashcardFacade {
                 .toDto(flashcardService.saveFlashcard(new FlashcardMapper().toEntity(flashcardDto)));
     }
 
-    public FlashcardDto updateFlashcard(Long id, FlashcardDto flashcardDto) {
+    public FlashcardDto updateFlashcard(FlashcardDto flashcardDto) {
         return new FlashcardMapper()
-                .toDto(flashcardService.updateFlashcard(id, new FlashcardMapper().toEntity(flashcardDto)));
+                .toDto(flashcardService.updateFlashcard(new FlashcardMapper().toEntity(flashcardDto)));
     }
 
     public void deleteFlashcard(Long id) {

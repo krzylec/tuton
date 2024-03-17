@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 @Builder
 public class FlashcardDto {
-    private long id;
+    private Long id;
     private String frontText;
     private String backText;
-    private long lessonId;
+    private Long lessonId;
 }
