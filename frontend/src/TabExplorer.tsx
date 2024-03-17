@@ -1,14 +1,11 @@
-import { useState } from "react";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import VideoView from "./views/LessonView";
+import LessonView from "./views/LessonView";
 import ListView from "./views/ListView";
 import LoginView from "./views/LoginView";
 import ToDoView from "./views/ToDoView";
 import AdminView from "./views/AdminView";
+import { Link, Routes, Route } from "react-router-dom";
 
 export default function TabExplorer() {
-  const [selectedTab, setSelectedTab] = useState(0);
-
   const dataList = [
     "Label 1",
     "Label 2",
@@ -25,59 +22,46 @@ export default function TabExplorer() {
   return (
     <div>
       {/* Przyciski zakładek */}
-      <Tabs
-        selectedIndex={selectedTab}
-        selectedTabClassName="p-2 mx-1 cursor-pointer bg-green-500 hover:bg-green-500 transition-colors rounded-md"
-        onSelect={(index) => setSelectedTab(index)}
-      >
-        <TabList className="flex justify-center m-1 flex-auto">
-          <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">
-            Lista
-          </Tab>
-          <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">
-            Lesson
-          </Tab>
-          <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">
-            Logowanie
-          </Tab>
-          <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">
-            todo list
-          </Tab>
-          <Tab className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md">
-            Admin
-          </Tab>
-        </TabList>
+      <div className="flex justify-center m-1 flex-auto">
+        <Link
+          to="/list"
+          className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md"
+        >
+          Lista
+        </Link>
+        <Link
+          to="/lesson/1"
+          className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md"
+        >
+          Lesson
+        </Link>
+        <Link
+          to="/login"
+          className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md"
+        >
+          Logowanie
+        </Link>
+        <Link
+          to="/todo"
+          className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md"
+        >
+          todo list
+        </Link>
+        <Link
+          to="/admin"
+          className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md"
+        >
+          Admin
+        </Link>
+      </div>
 
-        <TabPanel>
-          <div className="flex justify-center p-4">
-            <ListView labelList={dataList} />
-          </div>
-        </TabPanel>
-
-        <TabPanel>
-          <div className="flex justify-center p-4">
-            <VideoView />
-          </div>
-        </TabPanel>
-
-        <TabPanel>
-          <div className="flex justify-center p-4">
-            <LoginView></LoginView>
-          </div>
-        </TabPanel>
-
-        <TabPanel>
-          <div className="flex justify-center p-4">
-            <ToDoView></ToDoView>
-          </div>
-        </TabPanel>
-
-        <TabPanel>
-          <div className="flex justify-center p-4">
-            <AdminView></AdminView>
-          </div>
-        </TabPanel>
-      </Tabs>
+      <Routes>
+        <Route path="/list" element={<ListView labelList={dataList} />} />
+        <Route path="/lesson/:lessonId" element={<LessonView />} />
+        <Route path="/login" element={<LoginView />} />
+        <Route path="/todo" element={<ToDoView />} />
+        <Route path="/admin" element={<AdminView />} />
+      </Routes>
     </div>
   );
 }

@@ -18,7 +18,8 @@ public class Flashcard {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private String flashcardText;
+    private String frontText;
+    private String backText;
     @ManyToOne
     @JoinColumn(name = "lesson_id")
     private Lesson lesson;

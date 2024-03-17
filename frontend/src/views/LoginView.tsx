@@ -39,7 +39,7 @@ export default function LoginView() {
 
     try {
       const response: AxiosResponse = await axios.get(
-        "" + "http://localhost:8080/hello"
+        "" + "http://localhost:8080/hello",
       );
       const responseData: string = response.data;
       console.log(responseData);
@@ -50,10 +50,7 @@ export default function LoginView() {
     <div className="w-full max-w-xs">
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
-          <Label
-            htmlFor="username"
-            text="Login"
-          />
+          <Label htmlFor="username" text="Login" />
           <Input
             id="username"
             onChange={(e) => setUsername(e.target.value)}
@@ -62,10 +59,7 @@ export default function LoginView() {
           />
         </div>
         <div className="mb-6">
-          <Label
-            htmlFor="password"
-            text="Hasło" 
-          />
+          <Label htmlFor="password" text="Hasło" />
           <Input
             id="password"
             type="password"
@@ -77,10 +71,7 @@ export default function LoginView() {
           )}
         </div>
         <div className="flex items-center justify-between">
-          <Button 
-            onClick={handleLogin}
-            text="Zaloguj się"
-          />
+          <Button onClick={handleLogin} text="Zaloguj się" />
           <a
             className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
             href="https://memy.pl/show/big/uploads/Post/241627/15414986099022.jpg"

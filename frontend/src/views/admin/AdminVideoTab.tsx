@@ -3,12 +3,7 @@ import Button from "../../components/basic/Button";
 import Label from "../../components/basic/Label";
 import { fetchVideos, handleDeleteVideo } from "../../handlers/VideoHandler";
 import axios from "axios";
-
-interface VideoDto {
-  id: string;
-  title: string;
-  location: string;
-}
+import { VideoDto } from "../../Dto";
 
 export default function AdminView() {
   const [videos, setVideos] = useState<VideoDto[]>([]);
