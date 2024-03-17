@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "flashcard")
 @Getter
@@ -20,6 +22,8 @@ public class Flashcard {
     private Long id;
     private String frontText;
     private String backText;
+    private LocalDateTime creationDate;
+    private LocalDateTime modificationDate;
     @ManyToOne
     @JoinColumn(name = "lesson_id")
     private Lesson lesson;

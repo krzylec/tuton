@@ -7,8 +7,9 @@ export interface FlashcardDto {
 
 export interface LessonDto {
   id: number;
-  url: string;
-  flashcardsList: FlashcardDto[];
+  description: string;
+  creationDate: string;
+  flashcards: FlashcardDto[];
 }
 
 export interface VideoDto {
