@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: local
   h2.console:
       enabled: true
       path: '/console'
@@ -7,5 +9,4 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-videos-path: 'C:\Users\leczy\Videos\kopia'
 
