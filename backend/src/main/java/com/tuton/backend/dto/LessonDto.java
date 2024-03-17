@@ -3,6 +3,7 @@ package com.tuton.backend.dto;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -10,6 +11,7 @@ import java.util.List;
 public class LessonDto {
 
     private long id;
-    private String videoPath;
+    private String description;
+    private LocalDateTime creationDate;
     private List<FlashcardDto> flashcards;
 }
