@@ -1,6 +1,8 @@
 package com.tuton.backend.controllers.flashcard;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -27,21 +29,19 @@ public class FlashcardService {
     }
 
     public Flashcard saveFlashcard(Flashcard flashcard) {
-        if (flashcard.getLesson().getId() == 0) {
-            throw new IncorrectInputException("You must provide lesson id");
-        }
+        flashcard.setCreationDate(LocalDateTime.now());
         return repository.save(flashcard);
     }
 
-    public Flashcard updateFlashcard(Long id, Flashcard flashcard) {
-        flashcard.setId(id);
-        return repository.save(flashcard);
+    public Flashcard updateFlashcard(Flashcard flashcard) {
+        Flashcard byId = repository.findById(flashcard.getId()).orElseThrow();
+        byId.setBackText(flashcard.getBackText());
+        byId.setFrontText(flashcard.getFrontText());
+        byId.setModificationDate(LocalDateTime.now());
+        return repository.save(byId);
     }
 
     public void deleteFlashcard(Long id) {
-        if (id == null) {
-            throw new IllegalStateException("Given is null");
-        }
         repository.deleteById(id);
     }
 }

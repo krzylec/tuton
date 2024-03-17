@@ -37,9 +37,9 @@ public class FlashcardController {
         return flashcardFacade.saveFlashcard(flashcardDto);
     }
 
-    @PutMapping("/{id}")
-    public FlashcardDto updateFlashcard(@PathVariable Long id, @RequestBody FlashcardDto updatedFlashcard) {
-        return flashcardFacade.updateFlashcard(id, updatedFlashcard);
+    @PutMapping("")
+    public FlashcardDto updateFlashcard(@RequestBody FlashcardDto updatedFlashcard) {
+        return flashcardFacade.updateFlashcard(updatedFlashcard);
     }
 
     @DeleteMapping("/{id}")
