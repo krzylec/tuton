@@ -1,5 +1,6 @@
 import React from "react";
 import TabExplorer from "./TabExplorer";
+import LoginView from "./views/LoginView";
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
       <h1 className="text-center m-2 text-3xl font-bold hover:animate-spin">
         TUTON
       </h1>
-      <TabExplorer />
+      {localStorage.getItem("roles") !== null ? <TabExplorer /> : <LoginView />}
     </>
   );
 }

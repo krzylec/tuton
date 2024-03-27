@@ -46,6 +46,7 @@ export default function TabExplorer() {
         <Route path="/list" element={<ListView />} />
         <Route path="/lesson/:lessonId" element={<LessonView />} />
         <Route path="/login" element={<LoginView />} />
+        <Route path="" element={<LoginView />} />
         <Route path="/todo" element={<ToDoView />} />
         <Route path="/admin" element={<AdminView />} />
       </Routes>
