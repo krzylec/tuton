@@ -2,14 +2,14 @@ package com.tuton.backend.controllers.user;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tuton.backend.dto.RoleDto;
 import com.tuton.backend.dto.UserDto;
-import com.tuton.backend.model.Role;
 
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class AuthenticationController {
     private final AuthenticationFacade facade;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/login")
-    public List<Role> login(@RequestBody UserDto userDto) {
-        facade.login(userDto);
-        return ((MyUserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getRoles();
+    public List<RoleDto> login(@RequestBody UserDto userDto) {
+        return facade.login(userDto);
     }
 
     @PostMapping("/register")

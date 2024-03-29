@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,13 +28,14 @@ public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @Column(name = "ROLENAME")
     private String roleName;
     @ManyToMany(mappedBy = "roles")
-    private List<User> users;
+    private transient List<User> users;
 
     @Override
     public String getAuthority() {
-        return roleName;
+        return this.roleName;
     }
 
 }
