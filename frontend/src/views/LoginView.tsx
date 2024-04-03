@@ -1,49 +1,26 @@
 import { useState } from "react";
-import axios, { AxiosResponse } from "axios";
 import { Button, Input, Label } from "../components/basic";
-
-interface FlashcardProps {
-  title: string;
-  content: string;
-  contentFlipped: string;
-}
+import { login } from "../handlers/AuthenticationHandler";
+import { UserLoginDto } from "../Dto";
 
 export default function LoginView() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [userToLogin, setUserToLogin] = useState<UserLoginDto>({
+    username: "",
+    password: "",
+  });
 
   const isPasswordEmpty = () => {
     return password.length === 0;
   };
 
   const handleLogin = async () => {
-    const data = {
+    setUserToLogin({
       username: username,
       password: password,
-    };
-
-    console.log(data);
-
-    // axios.get('http://localhost:8080/hello').then(value => {
-    //   // console.log(value.data);
-    // }).catch(reason => {
-    //   console.log(reason)
-    // })
-    // .post("url_do_api/logowanie", data)
-    // .then((response) => {
-    //   console.log("Zalogowano pomyślnie!", response.data);
-    // })
-    // .catch((error) => {
-    //   console.error("Błąd logowania:", error.response.data);
-    // });
-
-    try {
-      const response: AxiosResponse = await axios.get(
-        "" + "http://localhost:8080/hello",
-      );
-      const responseData: string = response.data;
-      console.log(responseData);
-    } catch (error) {}
+    });
+    login(userToLogin);
   };
 
   return (

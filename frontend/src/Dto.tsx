@@ -17,3 +17,8 @@ export interface VideoDto {
   title: string;
   location: string;
 }
+
+export interface UserLoginDto {
+  username: string;
+  password: string;
+}
