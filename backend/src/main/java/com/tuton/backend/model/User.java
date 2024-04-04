@@ -2,6 +2,8 @@ package com.tuton.backend.model;
 
 import java.util.List;
 
+import com.tuton.backend.model.Role.UserRoles;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;

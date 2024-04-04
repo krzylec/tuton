@@ -7,5 +7,4 @@ import com.tuton.backend.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
-
 }

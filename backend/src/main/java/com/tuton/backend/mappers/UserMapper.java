@@ -12,9 +12,10 @@ public class UserMapper {
                 .build();
     }
 
-    public static UserDto register_toDto(User entity) {
+    public static UserDto toDto(User entity) {
         return UserDto.builder()
                 .username(entity.getUsername())
+                .password(entity.getPassword())
                 .build();
     }
 }

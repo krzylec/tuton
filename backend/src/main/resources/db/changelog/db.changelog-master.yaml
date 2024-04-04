@@ -2,3 +2,5 @@ databaseChangeLog:
   - include:
       file: classpath:/db/changelog/changes/001-initial-schema.sql
       file: classpath:/db/changelog/changes/002-user-tables.sql
+      file: classpath:/db/changelog/changes/003-role-rename.sql
+      file: classpath:/db/changelog/changes/004-hash-initial-users.sql

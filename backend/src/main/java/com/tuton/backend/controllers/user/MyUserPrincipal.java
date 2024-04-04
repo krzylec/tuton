@@ -18,10 +18,10 @@ import lombok.RequiredArgsConstructor;
 @Builder
 public class MyUserPrincipal implements UserDetails {
 
-    String username;
-    String password;
+    private String username;
+    private String password;
     @Getter
-    List<Role> roles;
+    private List<Role> roles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

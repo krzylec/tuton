@@ -2,6 +2,7 @@ package com.tuton.backend.controllers.user;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.tuton.backend.dto.RoleDto;
@@ -20,8 +21,8 @@ public class AuthenticationFacade {
         return new RoleMapper().toDto(service.login(UserMapper.toEntity(userDto)));
     }
 
-    public UserDto register(UserDto userDto) {
-        return UserMapper.register_toDto(service.register(UserMapper.toEntity(userDto)));
+    public ResponseEntity<String> register(UserDto userDto) {
+        return service.register(UserMapper.toEntity(userDto));
     }
 
 }
