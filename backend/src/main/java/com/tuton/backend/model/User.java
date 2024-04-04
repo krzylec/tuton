@@ -2,8 +2,7 @@ package com.tuton.backend.model;
 
 import java.util.List;
 
-import com.tuton.backend.model.Role.UserRoles;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -27,7 +26,7 @@ public class User {
     @Id
     private String username;
     private String password;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
 }
