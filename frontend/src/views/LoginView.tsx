@@ -6,21 +6,17 @@ import { UserLoginDto } from "../Dto";
 export default function LoginView() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [userToLogin, setUserToLogin] = useState<UserLoginDto>({
-    username: "",
-    password: "",
-  });
 
   const isPasswordEmpty = () => {
     return password.length === 0;
   };
 
-  const handleLogin = async () => {
-    setUserToLogin({
+  const handleLogin = () => {
+    const user = {
       username: username,
       password: password,
-    });
-    login(userToLogin);
+    };
+    login(user);
   };
 
   return (
@@ -28,18 +24,16 @@ export default function LoginView() {
       <div className="w-full max-w-xs">
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
-            <Label htmlFor="username" text="Login" />
+            <Label text="Login" />
             <Input
-              id="username"
               onChange={(e) => setUsername(e.target.value)}
               type="text"
               placeholder="Login"
             />
           </div>
           <div className="mb-6">
-            <Label htmlFor="password" text="Hasło" />
+            <Label text="Hasło" />
             <Input
-              id="password"
               type="password"
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Hasło"

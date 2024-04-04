@@ -6,6 +6,8 @@ const endpoint = `${API_URL}`;
 
 export const login = async (userToLogin: UserLoginDto) => {
   const response = await axios.post(`${endpoint}login`, userToLogin);
-  localStorage.setItem("userRoles", JSON.stringify(response.data));
-  console.log(JSON.stringify(response.data));
+  const storedRoles = sessionStorage.setItem(
+    "userRoles",
+    JSON.stringify(response.data)
+  );
 };
