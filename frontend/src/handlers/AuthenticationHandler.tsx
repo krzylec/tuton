@@ -5,9 +5,10 @@ import { UserLoginDto } from "../Dto";
 const endpoint = `${API_URL}`;
 
 export const login = async (userToLogin: UserLoginDto) => {
-  const response = await axios.post(`${endpoint}login`, userToLogin);
-  const storedRoles = sessionStorage.setItem(
-    "userRoles",
-    JSON.stringify(response.data)
-  );
+  let bodyFormData = new FormData();
+  bodyFormData.append("username", userToLogin.username);
+  bodyFormData.append("password", userToLogin.password);
+  const response = await axios.postForm(`${endpoint}/login`, bodyFormData);
+  sessionStorage.setItem("userRoles", JSON.stringify(response.data));
+  console.log(response.data);
 };

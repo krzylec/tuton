@@ -2,12 +2,10 @@ package com.tuton.backend.controllers.flashcard;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.tuton.backend.exceptions.custom.IDNotFoundException;
-import com.tuton.backend.exceptions.custom.IncorrectInputException;
 import com.tuton.backend.model.Flashcard;
 import com.tuton.backend.repositories.FlashcardRepository;
 

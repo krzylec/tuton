@@ -22,28 +22,31 @@ export default function TabExplorer() {
         >
           Lesson
         </Link>
-        {/* <Link
+        <Link
           to="/login"
           className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md"
         >
           Logowanie
-        </Link> */}
+        </Link>
         <Link
           to="/todo"
           className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md"
         >
           todo list
         </Link>
-        <Link
-          to="/admin"
-          className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md"
-        >
-          Admin
-        </Link>
+        {
+          //TODO check roles
+          <Link
+            to="/admin"
+            className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md"
+          >
+            Admin
+          </Link>
+        }
       </div>
 
       <Routes>
-        <Route path="" element={<LoginView />} />
+        <Route path="" element={<LessonView />} />
         <Route path="/login" element={<LoginView />} />
         <Route path="/list" element={<ListView />} />
         <Route path="/lesson/:lessonId" element={<LessonView />} />

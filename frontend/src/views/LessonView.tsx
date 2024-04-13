@@ -28,14 +28,15 @@ export default function LessonView() {
       </div>
 
       <div className="grid grid-cols-4 gap-4">
-        {lesson?.flashcards.map((flashcard, index) => (
-          <Flashcard
-            toAnimate={true}
-            key={index}
-            frontside={`Zawartość fiszki ${flashcard.frontText}`}
-            backside={`Zawartość fiszki zmieniona ${flashcard.backText}`}
-          />
-        ))}
+        {lesson?.flashcards &&
+          lesson.flashcards.map((flashcard, index) => (
+            <Flashcard
+              toAnimate={true}
+              key={index}
+              frontside={`Zawartość fiszki ${flashcard.frontText}`}
+              backside={`Zawartość fiszki zmieniona ${flashcard.backText}`}
+            />
+          ))}
       </div>
     </div>
   );

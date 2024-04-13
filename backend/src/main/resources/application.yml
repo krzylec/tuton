@@ -3,7 +3,7 @@ spring:
     active: local
   h2.console:
       enabled: true
-      path: '/console'
+      path: '/admin/console'
   datasource:
     url: 'jdbc:h2:file:./H2Database'
     driver-class-name: org.h2.Driver

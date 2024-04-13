@@ -1,11 +1,11 @@
 import axios from "axios";
 import API_URL from "./Config";
-import { FlashcardDto, LessonDto } from "../Dto";
+import { LessonDto } from "../Dto";
 
-const endpoint = `${API_URL}lesson`;
+const endpoint = `${API_URL}/lesson`;
 
 export const fetchLessons = async (
-  setLessons: React.Dispatch<React.SetStateAction<LessonDto[]>>,
+  setLessons: React.Dispatch<React.SetStateAction<LessonDto[]>>
 ) => {
   try {
     const response = await axios.get(`${endpoint}`);

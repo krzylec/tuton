@@ -8,11 +8,7 @@ function App() {
       <h1 className="text-center m-2 text-3xl font-bold hover:animate-spin">
         TUTON
       </h1>
-      {sessionStorage.getItem("userRoles") !== null ? (
-        <TabExplorer />
-      ) : (
-        <LoginView />
-      )}
+      <TabExplorer />
     </>
   );
 }

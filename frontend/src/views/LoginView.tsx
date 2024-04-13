@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button, Input, Label } from "../components/basic";
 import { login } from "../handlers/AuthenticationHandler";
-import { UserLoginDto } from "../Dto";
 
 export default function LoginView() {
   const [username, setUsername] = useState<string>("");
