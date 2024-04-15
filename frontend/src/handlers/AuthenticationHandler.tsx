@@ -8,7 +8,10 @@ export const login = async (userToLogin: UserLoginDto) => {
   let bodyFormData = new FormData();
   bodyFormData.append("username", userToLogin.username);
   bodyFormData.append("password", userToLogin.password);
-  const response = await axios.postForm(`${endpoint}/login`, bodyFormData);
+  const response = await axios.postForm(
+    `${endpoint}/login/process`,
+    bodyFormData
+  );
   sessionStorage.setItem("userRoles", JSON.stringify(response.data));
   console.log(response.data);
 };

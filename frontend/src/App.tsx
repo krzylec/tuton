@@ -1,6 +1,5 @@
 import React from "react";
 import TabExplorer from "./TabExplorer";
-import LoginView from "./views/LoginView";
 
 function App() {
   return (

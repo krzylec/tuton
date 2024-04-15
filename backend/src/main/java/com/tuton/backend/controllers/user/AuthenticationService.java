@@ -34,6 +34,7 @@ public class AuthenticationService implements UserDetailsService {
             SecurityContextHolder.getContext()
                     .setAuthentication(new TokenAuthentication(new MyUserPrincipal(checkUser.getUsername(),
                             checkUser.getPassword(), checkUser.getRoles())));
+
             return ((MyUserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getRoles();
         } else {
             // credentialns didnt match

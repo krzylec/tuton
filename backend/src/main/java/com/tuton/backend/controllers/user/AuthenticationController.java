@@ -20,6 +20,7 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public List<RoleDto> login(@RequestBody UserDto userDto) {
+        System.out.println("uderza w controller");
         return facade.login(userDto);
     }
 
