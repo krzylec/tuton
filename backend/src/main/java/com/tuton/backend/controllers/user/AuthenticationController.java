@@ -2,12 +2,9 @@ package com.tuton.backend.controllers.user;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tuton.backend.dto.RoleDto;
 import com.tuton.backend.dto.UserDto;
 
 import lombok.RequiredArgsConstructor;
-
-import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +17,7 @@ public class AuthenticationController {
     private final AuthenticationFacade facade;
 
     @PostMapping("/login")
-    public List<RoleDto> login(@RequestBody UserDto userDto) {
+    public ResponseEntity<?> login(@RequestBody UserDto userDto) {
         return facade.login(userDto);
     }
 
