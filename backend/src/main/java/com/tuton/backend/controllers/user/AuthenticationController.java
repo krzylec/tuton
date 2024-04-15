@@ -12,6 +12,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,8 +21,13 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public List<RoleDto> login(@RequestBody UserDto userDto) {
-        System.out.println("uderza w controller");
         return facade.login(userDto);
+    }
+
+    @GetMapping("/logout")
+    public ResponseEntity<?> logout() {
+        // Implement logout functionality (e.g., invalidate token)
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/register")

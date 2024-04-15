@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @Component
 @RequiredArgsConstructor
 public class AuthenticationFacade {
-    private final AuthenticationService service;
+    private final MyUserDetailsService service;
 
     public List<RoleDto> login(UserDto userDto) {
         return new RoleMapper().toDto(service.login(UserMapper.toEntity(userDto)));

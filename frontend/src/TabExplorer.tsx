@@ -4,6 +4,7 @@ import LoginView from "./views/LoginView";
 import ToDoView from "./views/ToDoView";
 import AdminView from "./views/AdminView";
 import { Link, Routes, Route } from "react-router-dom";
+import LogoutView from "./views/LogoutView";
 
 export default function TabExplorer() {
   return (
@@ -29,6 +30,12 @@ export default function TabExplorer() {
           Logowanie
         </Link>
         <Link
+          to="/logout"
+          className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md"
+        >
+          Logout
+        </Link>
+        <Link
           to="/todo"
           className="p-2 mx-1 cursor-pointer bg-blue-500 hover:bg-green-500 transition-colors rounded-md"
         >
@@ -48,6 +55,7 @@ export default function TabExplorer() {
       <Routes>
         <Route path="" element={<LessonView />} />
         <Route path="/login" element={<LoginView />} />
+        <Route path="/logout" element={<LogoutView />} />
         <Route path="/list" element={<ListView />} />
         <Route path="/lesson/:lessonId" element={<LessonView />} />
         <Route path="/todo" element={<ToDoView />} />
