@@ -21,10 +21,9 @@ public class AuthenticationController {
         return facade.login(userDto);
     }
 
-    @GetMapping("/logout")
-    public ResponseEntity<?> logout() {
-        // Implement logout functionality (e.g., invalidate token)
-        return ResponseEntity.ok().build();
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(@RequestBody String token) {
+        return facade.logout(token);
     }
 
     @PostMapping("/register")

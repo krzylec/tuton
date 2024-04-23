@@ -20,4 +20,8 @@ public class AuthenticationFacade {
     public ResponseEntity<String> register(UserDto userDto) {
         return service.register(UserMapper.toEntity(userDto));
     }
+
+    public ResponseEntity<String> logout(String token) {
+        return service.logout(token);
+    }
 }

@@ -5,6 +5,7 @@ import ToDoView from "./views/ToDoView";
 import AdminView from "./views/AdminView";
 import { Link, Routes, Route } from "react-router-dom";
 import LogoutView from "./views/LogoutView";
+import App from "./App";
 
 export default function TabExplorer() {
   return (
@@ -53,7 +54,7 @@ export default function TabExplorer() {
       </div>
 
       <Routes>
-        <Route path="" element={<LessonView />} />
+        <Route path="" element={<App />} />
         <Route path="/login" element={<LoginView />} />
         <Route path="/logout" element={<LogoutView />} />
         <Route path="/list" element={<ListView />} />

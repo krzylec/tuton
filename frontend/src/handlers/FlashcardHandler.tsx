@@ -1,14 +1,17 @@
-import axios from "axios";
+import axios, { AxiosHeaders } from "axios";
 import API_URL from "./Config";
 import { FlashcardDto } from "../Dto";
 
 const endpoint = `${API_URL}flashcard`;
+const headers = {
+  Authorization: `Bearer ${localStorage.getItem("token")}`,
+};
 
 export const fetchFlashcards = async (
-  setFlashcards: React.Dispatch<React.SetStateAction<FlashcardDto[]>>,
+  setFlashcards: React.Dispatch<React.SetStateAction<FlashcardDto[]>>
 ) => {
   try {
-    const response = await axios.get(`${endpoint}`);
+    const response = await axios.get(`${endpoint}`, { headers });
     setFlashcards(response.data);
   } catch (error) {
     console.error("Error fetching flashcards: ", error);
@@ -18,10 +21,10 @@ export const fetchFlashcards = async (
 export const handleCreateFlashcard = async (
   newFlashcard: FlashcardDto,
   setNewFlashcard: React.Dispatch<React.SetStateAction<FlashcardDto>>,
-  toFetch: React.Dispatch<React.SetStateAction<FlashcardDto[]>>,
+  toFetch: React.Dispatch<React.SetStateAction<FlashcardDto[]>>
 ) => {
   try {
-    await axios.post(`${endpoint}`, newFlashcard);
+    await axios.post(`${endpoint}`, newFlashcard, { headers });
     setNewFlashcard({ id: 0, frontText: "", backText: "", lessonId: 1 });
     fetchFlashcards(toFetch);
   } catch (error) {
@@ -31,10 +34,10 @@ export const handleCreateFlashcard = async (
 
 export const handleDeleteFlashcard = async (
   flashcardToDelete: FlashcardDto,
-  toFetch: React.Dispatch<React.SetStateAction<FlashcardDto[]>>,
+  toFetch: React.Dispatch<React.SetStateAction<FlashcardDto[]>>
 ) => {
   try {
-    await axios.delete(`${endpoint}/${flashcardToDelete.id}`);
+    await axios.delete(`${endpoint}/${flashcardToDelete.id}`, { headers });
     fetchFlashcards(toFetch);
   } catch (error) {
     console.error("Error deleting flashcard: ", error);
@@ -43,11 +46,10 @@ export const handleDeleteFlashcard = async (
 
 export const handleUpdateFlashcard = async (
   flashcardToUpdate: FlashcardDto,
-  toFetch: React.Dispatch<React.SetStateAction<FlashcardDto[]>>,
+  toFetch: React.Dispatch<React.SetStateAction<FlashcardDto[]>>
 ) => {
   try {
-    // let { id, ...flashcardData } = flashcardToUpdate;
-    await axios.put(`${endpoint}`, flashcardToUpdate);
+    await axios.put(`${endpoint}`, flashcardToUpdate, { headers });
     fetchFlashcards(toFetch);
   } catch (error) {
     console.error("Error updating flashcard: ", error);

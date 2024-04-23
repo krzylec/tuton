@@ -9,13 +9,14 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.tuton.backend.configuration.security.CustomAuthenticationManager;
 import com.tuton.backend.configuration.security.JwtTokenUtil;
 import com.tuton.backend.model.User;
 
 @Service
 public class AuthenticationService {
     @Autowired
-    private AuthenticationManager authenticationManager;
+    private CustomAuthenticationManager authenticationManager;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
@@ -39,6 +40,12 @@ public class AuthenticationService {
     public ResponseEntity<String> register(User entity) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'register'");
+    }
+
+    public ResponseEntity<String> logout(String token) {
+        // TODO Invalidate Jwt Token
+
+        return ResponseEntity.ok("logged out successfully");
     }
 
     private void authenticate(String username, String password) throws Exception {

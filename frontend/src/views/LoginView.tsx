@@ -1,22 +1,30 @@
 import { useState } from "react";
 import { Button, Input, Label } from "../components/basic";
 import { login } from "../handlers/AuthenticationHandler";
+import { Navigate } from "react-router-dom";
 
 export default function LoginView() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const isPasswordEmpty = () => {
     return password.length === 0;
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const user = {
       username: username,
       password: password,
     };
-    login(user);
+    if (await login(user)) {
+      setLoggedIn(true);
+    }
   };
+
+  if (loggedIn) {
+    return <Navigate to="/list" replace />;
+  }
 
   return (
     <div className="flex justify-center">
